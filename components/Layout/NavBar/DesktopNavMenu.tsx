@@ -76,6 +76,14 @@ const NavigationMenuItem = ({
 
 const DesktopNavMenu = () => {
   const pathname = usePathname();
+  const paths = [
+    '/services',
+    '/portfolio/ethereal-dreams',
+    '/blog/breaking-boundaries-with-digital-techniques',
+    '/faq',
+    '/not-found',
+  ];
+  const pagesIsActive = paths.includes(pathname);
 
   return (
     <NavigationMenu.Root className="relative z-[1] flex justify-center">
@@ -83,6 +91,54 @@ const DesktopNavMenu = () => {
         <NavigationMenuItem href="/">Home</NavigationMenuItem>
         <NavigationMenuItem href="/portfolio">Portfolio</NavigationMenuItem>
         <NavigationMenuItem href="/blog">Blog</NavigationMenuItem>
+
+        <NavigationMenu.Item>
+          <NavigationMenu.Trigger
+            className={cn(
+              'flex select-none items-center gap-1 rounded-[4px] border-b-2 border-transparent text-[18px] font-normal leading-6 text-gray-700 no-underline outline-none transition-all duration-300 ease-out hover:rounded-none hover:text-secondary-700 focus:rounded-none focus:border-b-2 focus:border-gray-500 dark:text-gray-300 dark:hover:text-secondary-300 dark:focus:border-dark-3',
+              pagesIsActive &&
+                'rounded-none border-b-secondary-500 font-bold text-secondary-800 hover:text-secondary-800 focus:rounded-none focus:border-transparent focus:border-b-secondary-500 dark:border-b-secondary-800 dark:text-secondary-200 dark:hover:text-secondary-200 dark:focus:border-transparent dark:focus:border-b-secondary-800'
+            )}
+          >
+            Pages{' '}
+            <RxCaretDown
+              className="relative text-[16px] transition-transform duration-[250] ease-out group-data-[state=open]:-rotate-180"
+              aria-hidden
+            />
+          </NavigationMenu.Trigger>
+          <NavigationMenu.Content className="absolute left-0 top-0 w-full data-[motion=from-end]:animate-enterFromRight data-[motion=from-start]:animate-enterFromLeft data-[motion=to-end]:animate-exitToRight data-[motion=to-start]:animate-exitToLeft laptop:w-auto">
+            <nav className="flex h-[470px] w-[572px] items-center justify-center gap-6 rounded-xl bg-light-1 p-6 dark:bg-dark-1">
+              <div className="flex h-full w-60 flex-col items-center justify-center rounded-lg bg-gradient-to-r from-primary-700/80 to-secondary-500/80">
+                <p className="w-5/6 text-center font-lora text-[28px] font-semibold leading-[48px] text-gray-50">
+                  Maximize success with custom inner pages.
+                </p>
+              </div>
+              <div className="flex w-[260px] flex-col items-start justify-start gap-[10px]">
+                <ListItem href="/services" title="Services">
+                  Custom illustration, 3D modeling, animation, and more.
+                </ListItem>
+                <ListItem
+                  href="/portfolio/ethereal-dreams"
+                  title="Project Showcase"
+                >
+                  Our best digital art masterpieces, curated for you.{' '}
+                </ListItem>
+                <ListItem
+                  href="/blog/breaking-boundaries-with-digital-techniques"
+                  title="Single Post"
+                >
+                  In-depth analysis of digital art industry.
+                </ListItem>
+                <ListItem href="/faq" title="FAQ">
+                  Frequently asked questions about our services.
+                </ListItem>
+                <ListItem href="/not-found" title="404">
+                  Oops! This page does not exist.
+                </ListItem>
+              </div>
+            </nav>
+          </NavigationMenu.Content>
+        </NavigationMenu.Item>
       </NavigationMenu.List>
 
       <div className="perspective-[2000px] absolute left-0 top-full flex justify-center">

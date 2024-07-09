@@ -222,6 +222,7 @@ const MobileNavMenu = () => {
               <div className="navbar--content flex w-full items-center justify-between px-4 tablet:px-[140px]">
                 <Logo />
                 <div className="icons flex items-center justify-start gap-4">
+                  <ModeToggle />
                   <div className="laptop:hidden">
                     <CloseIcon onClick={handleMenuToggle} />
                   </div>

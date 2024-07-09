@@ -55,7 +55,7 @@ export default function NavBar() {
               </svg>
             </div>
             <p className="h-full font-lora text-xl font-medium leading-5 text-black dark:text-white tablet:text-2xl">
-              Ali Ebrahimi
+              The Folio
             </p>
           </div>
         </Link>
@@ -63,7 +63,7 @@ export default function NavBar() {
           <DesktopNavMenu />
         </div>
         <div className="icons z-[1] flex items-center justify-start gap-4 laptop:gap-5">
-          
+          <ModeToggle />
           <a
             href={contactLink}
             className="hidden h-full flex-1 items-center justify-center rounded-full bg-secondary-800 px-4 py-3 transition-colors duration-300 ease-out hover:bg-secondary-700 dark:bg-secondary-300 dark:hover:bg-secondary-200 laptop:flex"
