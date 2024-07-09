@@ -1,30 +1,32 @@
-name: Build and Push Docker Image
+name: ci
 
 on:
   push:
     branches:
-      - main # یا هر برنچ دیگری که می‌خواهید
+      - main 
 
 jobs:
-  build:
+  docker:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
         with:
-          registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GHCR_TOKEN }}
-
-      - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository_owner }}/$(basename $GITHUB_REPOSITORY):${{ github.sha }} .
-
-      - name: Push Docker image
-        run: docker push ghcr.io/${{ github.repository_owner }}/$(basename $GITHUB_REPOSITORY):${{ github.sha }}
+      
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ github.repository_owner }}/myblog:latest
