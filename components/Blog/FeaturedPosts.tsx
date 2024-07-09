@@ -29,16 +29,6 @@ const FeaturedPosts = () => {
           </div>
         ))
       })
-    // const jsonData = res.json()
-
-    // return jsonData?.posts?.map((post: any, index: number) => (
-    //   <div
-    //     key={post.id}
-    //     className={cn(index >= 2 ? 'hidden desktop:block' : 'block')}
-    //   >
-    //     <PostCard post={post} />
-    //   </div>
-    // ))
   }
 
 
@@ -49,14 +39,6 @@ const FeaturedPosts = () => {
         <AnimateOnScroll noScale y={40} threshold={0.4} duration={0.6}>
           <div className="posts flex w-full flex-col items-center gap-y-5 tablet:grid tablet:grid-cols-2 tablet:items-stretch tablet:gap-x-8 tablet:gap-y-11 desktop:grid-cols-3">
             {generatePosts()}
-            {/* {posts?.map((post: any, index: number) => (
-              <div
-                key={post.id}
-                className={cn(index >= 2 ? 'hidden desktop:block' : 'block')}
-              >
-                <PostCard post={post} />
-              </div>
-            ))} */}
           </div>
         </AnimateOnScroll>
       </section>
